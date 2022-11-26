@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_project/src/features/authentication/controllers/signup_controller.dart';
 
 import '../../../../constants/sizes.dart';
 import '../../../../constants/text_strings.dart';
@@ -10,45 +11,67 @@ class SignUpFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = SignupController();
+    final formKey = GlobalKey<FormState>();
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: formHeight-10),  //add padding from top to bottom
+      padding: const EdgeInsets.symmetric(
+          vertical: formHeight - 10), //add padding from top to bottom
       child: Form(
+        key: formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFormField(
-              decoration:const  InputDecoration(
+              controller: controller.fullname,
+              decoration: const InputDecoration(
                 label: Text('FullName'),
                 prefixIcon: Icon(Icons.person_outline_rounded),
               ),
             ),
-            const SizedBox(height: formHeight - 20,),
+            const SizedBox(
+              height: formHeight - 20,
+            ),
             TextFormField(
-              decoration:const  InputDecoration(
+              controller: controller.email,
+              decoration: const InputDecoration(
                 label: Text(eMail),
                 prefixIcon: Icon(Icons.email_outlined),
               ),
             ),
-            const SizedBox(height: formHeight - 20,),
+            const SizedBox(
+              height: formHeight - 20,
+            ),
             TextFormField(
-              decoration:const  InputDecoration(
+              controller: controller.phoneNo,
+              decoration: const InputDecoration(
                 label: Text('Phone No.'),
                 prefixIcon: Icon(Icons.numbers),
               ),
             ),
-            const SizedBox(height: formHeight - 20,),
+            const SizedBox(
+              height: formHeight - 20,
+            ),
             TextFormField(
-              decoration:const  InputDecoration(    //the decoration for textformfield is in the theme folder
+              controller: controller.password,
+              decoration: const InputDecoration(
+                //the decoration for textformfield is in the theme folder
                 label: Text(password),
                 prefixIcon: Icon(Icons.fingerprint),
               ),
             ),
-            const SizedBox(height: formHeight - 20,),
-             SizedBox(
+            const SizedBox(
+              height: formHeight - 20,
+            ),
+            SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: (){}, 
-                child: Text(signup.toLowerCase())),
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      controller.registerUser(controller.email.text.trim(),
+                          controller.password.text.trim());
+                    }
+                  },
+                  child: Text(signup.toLowerCase())),
             )
           ],
         ),
