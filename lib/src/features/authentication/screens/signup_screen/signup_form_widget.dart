@@ -3,6 +3,8 @@ import 'package:login_project/src/features/authentication/controllers/signup_con
 
 import '../../../../constants/sizes.dart';
 import '../../../../constants/text_strings.dart';
+import '../../../../repository/authentication_repository/authentication_repository.dart';
+import '../dashboard/dashboard_screen.dart';
 
 class SignUpFormWidget extends StatelessWidget {
   const SignUpFormWidget({
@@ -12,6 +14,7 @@ class SignUpFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = SignupController();
+    final firebaseSignup = AuthenticationRepository();
     final formKey = GlobalKey<FormState>();
     return Container(
       padding: const EdgeInsets.symmetric(
@@ -67,11 +70,12 @@ class SignUpFormWidget extends StatelessWidget {
               child: ElevatedButton(
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      controller.registerUser(controller.email.text.trim(),
-                          controller.password.text.trim());
+                      firebaseSignup.createUserWithEmailAndPassword(
+                          controller.email.text, controller.password.text);
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: ((context) => const DashboardScreen())));
                     }
                   },
-                  child: Text(signup.toLowerCase())),
+                  child: Text(signup.toUpperCase())),
             )
           ],
         ),

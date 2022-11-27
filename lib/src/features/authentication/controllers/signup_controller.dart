@@ -5,8 +5,4 @@ class SignupController {
   final password = TextEditingController();
   final fullname = TextEditingController();
   final phoneNo = TextEditingController();
-
-  void registerUser(String email, String password){
-    
-  }
 }

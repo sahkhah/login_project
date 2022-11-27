@@ -15,37 +15,48 @@ class LoginScreen extends StatelessWidget {
     final imgSize = mediaQuery.size;
     return SafeArea(
       child: Scaffold(
-          body: SingleChildScrollView(
-        child: Stack(
-          children: [ 
-            FadeInAnimationWidget(
-              animate: true,
-               durationInMs: 1200,
-              animatePosition: AnimationPosition(
-              bottomAfter: 0,
-              bottomBefore: 0,
-              leftAfter: 0,
-              leftBefore: -100,
-              rightAfter: 0,
-              rightBefore: 0,
-              topAfter: 0,
-              topBefore: 0,
-            ),
-              child: Container(
-              padding: const EdgeInsets.all(defaultSize),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start, //makes the column at the left side of the screen
-                children: [
-                      LoginHeaderWidget(imgSize: imgSize),
-                      const LoginForm(),
-                      const LoginFooterWidget(),
-                ],
-              ),
+          body: SizedBox(
+            height: 800,
+            child: SingleChildScrollView(
+        child: SizedBox(
+          height: 400,
+          child: Stack(
+              children: [ 
+                FadeInAnimationWidget(
+                  animate: true,
+                   durationInMs: 1200,
+                  animatePosition: AnimationPosition(
+                  bottomAfter: 0,
+                  bottomBefore: 0,
+                  leftAfter: 0,
+                  leftBefore: -100,
+                  rightAfter: 0,
+                  rightBefore: 0,
+                  topAfter: 0,
+                  topBefore: 0,
+                ),
+                    child: Container(
+                    padding: const EdgeInsets.all(defaultSize),
+                    child: SizedBox(
+                      height: 500,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start, //makes the column at the left side of the screen
+                        children: [
+                              LoginHeaderWidget(imgSize: imgSize),
+                              const LoginForm(),
+                              const LoginFooterWidget(),
+                        ],
                       ),
-            ),
-          ],
+                    ),
+                            ),
+                  ),
+              ]
+                ),
         ),
-      )),
+            
+        ),
+          ),
+      ),
     );
   }
 }

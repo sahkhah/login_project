@@ -32,18 +32,20 @@ class SignUpScreen extends StatelessWidget {
               topAfter: 0,
               topBefore: 0,
             ),
-                child: Container(
-                padding: const EdgeInsets.all(defaultSize),
-                child: Column(
-                  children:  const [
-                     FormHeaderWidget(subtitle: signupSubtitle, image: welcomeImage, title: signupTitle),
-                     SizedBox(height: formHeight - 20,),
-                     SignUpFormWidget(),
-                     SizedBox(height: formHeight - 20,),
-                     SignUpFooterWidget()
-                  ],
+                child: SizedBox(
+                  child: Container(
+                  padding: const EdgeInsets.all(defaultSize),
+                  child: Column(
+                    children:  const [
+                       FormHeaderWidget(subtitle: signupSubtitle, image: welcomeImage, title: signupTitle),
+                       SizedBox(height: formHeight - 20,),
+                       SignUpFormWidget(),
+                       SizedBox(height: formHeight - 20,),
+                       SignUpFooterWidget()
+                    ],
+                  ),
+                            ),
                 ),
-                          ),
               ),
             ],
           ) ),

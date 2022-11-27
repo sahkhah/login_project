@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:login_project/firebase_options.dart';
 import 'package:login_project/src/features/authentication/screens/dashboard/dashboard_screen.dart';
+import 'package:login_project/src/features/authentication/screens/login_screen/login_screen.dart';
 import 'package:login_project/src/utils/theme/apptheme.dart';
 
 void main() {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: const DashboardScreen(),
+      home: const LoginScreen(),
     );
   }
 }

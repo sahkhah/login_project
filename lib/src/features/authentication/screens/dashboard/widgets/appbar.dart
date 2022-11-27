@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:login_project/src/repository/authentication_repository/authentication_repository.dart';
 
 import '../../../../../constants/colors..dart';
 import '../../../../../constants/image_strings.dart';
 import '../../../../../constants/text_strings.dart';
-
+import '../../welcome_screen/welcome_screen.dart';
 
 class DashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
   const DashboardAppBar({
@@ -31,7 +32,10 @@ class DashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
             color: cardBgColor,
           ),
           child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                AuthenticationRepository().logout();
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: ((context) => const WelcomeScreen())));
+              },
               icon: const Image(image: AssetImage(userProfileImage))),
         )
       ],
